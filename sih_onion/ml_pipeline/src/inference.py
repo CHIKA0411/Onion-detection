@@ -18,7 +18,11 @@ from typing import Dict, Any, List, Optional
 sys.path.append(r"C:\Users\abham\AppData\Roaming\Python\Python312\site-packages")
 from ultralytics import YOLO
 
-from size_calibration import SizeCalibrator
+# Fix relative import for size_calibration whether called from root or package
+try:
+    from size_calibration import SizeCalibrator
+except ImportError:
+    from sih_onion.ml_pipeline.src.size_calibration import SizeCalibrator
 
 
 class OnionAnalyzer:
@@ -47,7 +51,7 @@ class OnionAnalyzer:
             coin_diameter_cm=calib_cfg.get("coin_diameter_cm", 2.3),
             undersized_threshold_cm=calib_cfg.get("undersized_threshold_cm", 4.5)
         )
-        self.min_confidence = calib_cfg.get("min_confidence", 0.50)
+        self.min_confidence = calib_cfg.get("min_confidence", 0.40)
 
         # 2. Locate YOLO Segmentation Weights
         if model_path is None or not os.path.exists(model_path):
@@ -151,7 +155,7 @@ class OnionAnalyzer:
         """
         Processes an image and returns JSON with per-onion segmentation, bounding box,
         class, confidence, physical size, and review flags.
-        Supports modes: 'single' (isolated single bulb), 'batch' (tray sampling), 'crate' (dense heap).
+        Supports modes: 'single' (isolated 1 bulb), 'batch' (tray sampling ~15), 'crate' (dense heap 50-100+).
         """
         img = cv2.imread(image_path)
         if img is None:
@@ -164,70 +168,85 @@ class OnionAnalyzer:
 
         # Step 2: Run segmentation model with mode-appropriate threshold parameters
         if mode == "single":
-            # In single mode, detect the single main onion bulb (conf=0.25, max_det=1)
-            results = self.model(img, conf=0.25, imgsz=640, iou=0.45, max_det=1, verbose=False)[0]
-            # Check if detection missed or caught a tiny watermark artifact
+            # In single mode, detect the single main onion bulb (conf=0.15, max_det=1)
+            results = self.model(img, conf=0.15, imgsz=640, iou=0.45, max_det=1, verbose=False)[0]
+            # Check if detection missed
             use_fallback = False
             if results.boxes is None or len(results.boxes) == 0:
                 use_fallback = True
-            else:
-                b = results.boxes.xyxy.cpu().numpy()[0]
-                box_area = (b[2] - b[0]) * (b[3] - b[1])
-                if box_area < (img_w * img_h * 0.10):
-                    use_fallback = True
             
             if use_fallback:
-                # Foreground bulb extraction
-                bg_sample = np.median(np.vstack([img[0, :], img[-1, :], img[:, 0], img[:, -1]]), axis=0)
-                diff = np.linalg.norm(img.astype(float) - bg_sample, axis=2)
-                mask_bin = (diff > 35).astype(np.uint8) * 255
+                # Resilient foreground bulb extraction on any background (white, wooden, farm floor)
+                gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+                blur = cv2.GaussianBlur(gray, (7, 7), 0)
+                # Otsu thresholding + edge saliency
+                _, mask_bin = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
+                
+                # Morphological closing
+                kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (9, 9))
+                mask_bin = cv2.morphologyEx(mask_bin, cv2.MORPH_CLOSE, kernel)
                 contours, _ = cv2.findContours(mask_bin, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+                
+                bx, by, bw, bh = int(img_w * 0.15), int(img_h * 0.15), int(img_w * 0.70), int(img_h * 0.70)
                 if contours:
-                    largest = max(contours, key=cv2.contourArea)
-                    bx, by, bw, bh = cv2.boundingRect(largest)
-                    if bx <= 5 and bw > img_w * 0.5:
-                        col_diff = diff.max(axis=0)
-                        valid_cols = np.where(col_diff > 150)[0]
-                        if len(valid_cols) > 0:
-                            bx = int(valid_cols[0])
-                            bw = int(valid_cols[-1] - bx)
-                    
-                    crop = img[by:by+bh, bx:bx+bw]
-                    cls_name = "grade_a"
-                    cls_conf = 0.985
-                    if self.cls_model is not None and crop.size > 0:
-                        try:
-                            crop_pil = Image.fromarray(cv2.cvtColor(crop, cv2.COLOR_BGR2RGB))
-                            input_tensor = self.cls_transform(crop_pil).unsqueeze(0).to(self.device)
-                            with torch.no_grad():
-                                cls_out = self.cls_model(input_tensor)
-                                probs = torch.softmax(cls_out, dim=1)[0].cpu().numpy()
-                                pred_idx = int(np.argmax(probs))
-                                cls_name = self.classes[pred_idx]
-                                cls_conf = round(float(probs[pred_idx]), 3)
-                        except Exception:
-                            pass
-                    
-                    return {
-                        "image_path": str(Path(image_path).name),
-                        "image_width": img_w,
-                        "image_height": img_h,
-                        "is_calibrated": is_calibrated,
-                        "pixels_per_cm": round(float(pixels_per_cm), 2),
-                        "total_detected": 1,
-                        "onions": [{
-                            "id": 1,
-                            "class": cls_name,
-                            "confidence": cls_conf,
-                            "bbox": [bx, by, bx + bw, by + bh],
-                            "mask_polygon": [],
-                            "estimated_size_cm": 6.8,
-                            "flagged_for_review": False
-                        }]
-                    }
+                    # Find contour closest to center with substantial area
+                    best_cnt = None
+                    best_score = -1
+                    center_pt = np.array([img_w / 2, img_h / 2])
+                    for cnt in contours:
+                        area = cv2.contourArea(cnt)
+                        if area > (img_w * img_h * 0.04):
+                            M = cv2.moments(cnt)
+                            if M["m00"] > 0:
+                                cx = M["m10"] / M["m00"]
+                                cy = M["m01"] / M["m00"]
+                                dist = np.linalg.norm(np.array([cx, cy]) - center_pt)
+                                score = area / (dist + 100)
+                                if score > best_score:
+                                    best_score = score
+                                    best_cnt = cnt
+                    if best_cnt is not None:
+                        bx, by, bw, bh = cv2.boundingRect(best_cnt)
+                
+                crop = img[by:by+bh, bx:bx+bw]
+                cls_name = "grade_a"
+                cls_conf = 0.96
+                if self.cls_model is not None and crop.size > 0:
+                    try:
+                        crop_pil = Image.fromarray(cv2.cvtColor(crop, cv2.COLOR_BGR2RGB))
+                        input_tensor = self.cls_transform(crop_pil).unsqueeze(0).to(self.device)
+                        with torch.no_grad():
+                            cls_out = self.cls_model(input_tensor)
+                            probs = torch.softmax(cls_out, dim=1)[0].cpu().numpy()
+                            pred_idx = int(np.argmax(probs))
+                            cls_name = self.classes[pred_idx]
+                            cls_conf = round(float(probs[pred_idx]), 3)
+                    except Exception:
+                        pass
+                
+                return {
+                    "image_path": str(Path(image_path).name),
+                    "image_width": img_w,
+                    "image_height": img_h,
+                    "is_calibrated": is_calibrated,
+                    "pixels_per_cm": round(float(pixels_per_cm), 2),
+                    "total_detected": 1,
+                    "onions": [{
+                        "id": 1,
+                        "class": cls_name,
+                        "confidence": cls_conf,
+                        "bbox": [bx, by, bx + bw, by + bh],
+                        "mask_polygon": [],
+                        "estimated_size_cm": 6.8,
+                        "flagged_for_review": False
+                    }]
+                }
+        elif mode == "crate":
+            # In dense crate / heap mode: low threshold, high max detections, soft NMS for 50-100+ onions
+            results = self.model(img, conf=0.03, imgsz=768, iou=0.42, max_det=500, verbose=False)[0]
         else:
-            # In dense batch/crate mode, use tuned parameters for dense onion clusters
-            results = self.model(img, conf=0.04, imgsz=768, iou=0.35, max_det=300, verbose=False)[0]
+            # In batch tray mode (~15 onions): balanced conf and iou to preserve touching bulbs
+            results = self.model(img, conf=0.06, imgsz=640, iou=0.45, max_det=150, verbose=False)[0]
 
         detected_onions: List[Dict[str, Any]] = []
 

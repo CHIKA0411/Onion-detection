@@ -70,7 +70,6 @@ export async function detectOnionsDynamically(imageSrc: string): Promise<Dynamic
         const bgR = borderR / borderSamples;
         const bgG = borderG / borderSamples;
         const bgB = borderB / borderSamples;
-        const isWhiteStudioBg = bgR > 180 && bgG > 180 && bgB > 180;
 
         // 3. Candidate Bounding Box Generation
         interface RawBox {
@@ -82,17 +81,22 @@ export async function detectOnionsDynamically(imageSrc: string): Promise<Dynamic
         }
         const rawBoxes: RawBox[] = [];
 
-        // Check if Single Dominant Bulb
+        // Check foreground distribution and center-of-mass
         let minX = procW, maxX = 0, minY = procH, maxY = 0;
         let fgCount = 0;
+        let weightedX = 0, weightedY = 0;
+
         for (let y = 0; y < procH; y += 4) {
           for (let x = 0; x < procW; x += 4) {
             const idx = (y * procW + x) * 4;
             const r = data[idx], g = data[idx + 1], b = data[idx + 2];
             const diff = Math.abs(r - bgR) + Math.abs(g - bgG) + Math.abs(b - bgB);
-            // Onion hue signature: typically R > G or distinct difference from background
-            if (diff > 50) {
+            const isReddish = r > 40 && (r > g * 0.90 || r > b * 0.90);
+
+            if (diff > 45 || isReddish) {
               fgCount++;
+              weightedX += x;
+              weightedY += y;
               if (x < minX) minX = x;
               if (x > maxX) maxX = x;
               if (y < minY) minY = y;
@@ -102,15 +106,84 @@ export async function detectOnionsDynamically(imageSrc: string): Promise<Dynamic
         }
 
         const totalSamples = (procW / 4) * (procH / 4);
-        const fgRatio = fgCount / totalSamples;
+        const fgRatio = fgCount / (totalSamples || 1);
         const singleW = maxX - minX;
         const singleH = maxY - minY;
+        const centerX = fgCount > 0 ? weightedX / fgCount : procW / 2;
+        const centerY = fgCount > 0 ? weightedY / fgCount : procH / 2;
+        const distFromCenter = Math.hypot(centerX - procW / 2, centerY - procH / 2) / Math.hypot(procW / 2, procH / 2);
 
-        // If isolated bulb on plain background occupying significant area
-        if (isWhiteStudioBg && fgRatio > 0.15 && singleW > procW * 0.4 && singleH > procH * 0.4) {
-          // Exactly 1 Single Onion detected!
-          const padX = singleW * 0.04;
-          const padY = singleH * 0.04;
+        // Multi-bulb detection and density estimation
+        // 1. Calculate per-pixel brightness, onion chrominance, and crevice edges
+        const energyMap = new Float32Array(procW * procH);
+        const isFg = new Uint8Array(procW * procH);
+
+        for (let y = 1; y < procH - 1; y++) {
+          const rowOffset = y * procW;
+          for (let x = 1; x < procW - 1; x++) {
+            const idx = (rowOffset + x) * 4;
+            const r = data[idx], g = data[idx + 1], b = data[idx + 2];
+
+            // Gradient magnitude (detects dark crevices and shadows between overlapping onions)
+            const leftIdx = (rowOffset + (x - 1)) * 4;
+            const rightIdx = (rowOffset + (x + 1)) * 4;
+            const upIdx = ((y - 1) * procW + x) * 4;
+            const downIdx = ((y + 1) * procW + x) * 4;
+
+            const dx = Math.abs(data[rightIdx] - data[leftIdx]) + Math.abs(data[rightIdx + 1] - data[leftIdx + 1]);
+            const dy = Math.abs(data[downIdx] - data[upIdx]) + Math.abs(data[downIdx + 1] - data[upIdx + 1]);
+            const grad = dx + dy;
+
+            // Onion peel chrominance & luminance
+            const chroma = (r - g * 0.92) + (r - b * 0.90);
+            const lum = 0.299 * r + 0.587 * g + 0.114 * b;
+
+            // Foreground onion criterion
+            if (r > 35 && (r > g * 0.88 || chroma > 10 || r > b * 0.95)) {
+              isFg[rowOffset + x] = 1;
+              const energy = chroma * 1.1 + lum * 0.45 - grad * 0.55;
+              energyMap[rowOffset + x] = Math.max(0, energy);
+            }
+          }
+        }
+
+        // 2. Identify local optical peaks
+        // Dynamically adjust peakRadius based on preliminary detection density
+        const initialRadius = Math.max(4, Math.round(procW / 70));
+        let candidatePeaks: { x: number; y: number; val: number }[] = [];
+
+        for (let y = initialRadius + 2; y < procH - initialRadius - 2; y += 2) {
+          for (let x = initialRadius + 2; x < procW - initialRadius - 2; x += 2) {
+            const val = energyMap[y * procW + x];
+            if (val < 15) continue;
+
+            let isLocalMax = true;
+            for (let dy = -initialRadius; dy <= initialRadius; dy += 2) {
+              for (let dx = -initialRadius; dx <= initialRadius; dx += 2) {
+                if (dx === 0 && dy === 0) continue;
+                if (energyMap[(y + dy) * procW + (x + dx)] > val) {
+                  isLocalMax = false;
+                  break;
+                }
+              }
+              if (!isLocalMax) break;
+            }
+            if (isLocalMax) {
+              candidatePeaks.push({ x, y, val });
+            }
+          }
+        }
+
+        // Determine scene mode:
+        // Case 1: Exactly 1 single isolated onion (large centered bulb with few scattered peaks)
+        const isSingleBulb = (
+          (candidatePeaks.length <= 4 && singleW > procW * 0.35 && singleH > procH * 0.35 && distFromCenter < 0.35) ||
+          (fgRatio > 0.15 && singleW > procW * 0.45 && singleH > procH * 0.45 && candidatePeaks.length <= 6)
+        );
+
+        if (isSingleBulb) {
+          const padX = singleW * 0.05;
+          const padY = singleH * 0.05;
           rawBoxes.push({
             x: Math.max(0, minX - padX),
             y: Math.max(0, minY - padY),
@@ -119,77 +192,16 @@ export async function detectOnionsDynamically(imageSrc: string): Promise<Dynamic
             score: 0.99,
           });
         } else {
-          // Multi-bulb detection (Tray 10-25 onions, or Crate 40-100+ onions)
-          // 1. Calculate per-pixel brightness, onion chrominance, and crevice edges
-          const energyMap = new Float32Array(procW * procH);
-          const isFg = new Uint8Array(procW * procH);
-
-          for (let y = 1; y < procH - 1; y++) {
-            const rowOffset = y * procW;
-            for (let x = 1; x < procW - 1; x++) {
-              const idx = (rowOffset + x) * 4;
-              const r = data[idx], g = data[idx + 1], b = data[idx + 2];
-
-              // Gradient magnitude (detects dark crevices and shadows between overlapping onions)
-              const leftIdx = (rowOffset + (x - 1)) * 4;
-              const rightIdx = (rowOffset + (x + 1)) * 4;
-              const upIdx = ((y - 1) * procW + x) * 4;
-              const downIdx = ((y + 1) * procW + x) * 4;
-
-              const dx = Math.abs(data[rightIdx] - data[leftIdx]) + Math.abs(data[rightIdx + 1] - data[leftIdx + 1]);
-              const dy = Math.abs(data[downIdx] - data[upIdx]) + Math.abs(data[downIdx + 1] - data[upIdx + 1]);
-              const grad = dx + dy;
-
-              // Onion peel chrominance & luminance
-              const chroma = (r - g * 0.92) + (r - b * 0.90);
-              const lum = 0.299 * r + 0.587 * g + 0.114 * b;
-
-              // Foreground onion criterion
-              if (r > 38 && (r > g * 0.92 || chroma > 15)) {
-                isFg[rowOffset + x] = 1;
-                // Bulb peak energy: peaks at the convex center of each bulb
-                const energy = chroma * 1.1 + lum * 0.4 - grad * 0.6;
-                energyMap[rowOffset + x] = Math.max(0, energy);
-              }
-            }
-          }
-
-          // 2. Identify local optical peaks (true centroids of individual bulbs)
-          const peakRadius = Math.max(6, Math.round(procW / 50));
-          const peaks: { x: number; y: number; val: number }[] = [];
-
-          const step = 2;
-          for (let y = peakRadius + 2; y < procH - peakRadius - 2; y += step) {
-            for (let x = peakRadius + 2; x < procW - peakRadius - 2; x += step) {
-              const val = energyMap[y * procW + x];
-              if (val < 20) continue;
-
-              let isLocalMax = true;
-              for (let dy = -peakRadius; dy <= peakRadius; dy += 3) {
-                for (let dx = -peakRadius; dx <= peakRadius; dx += 3) {
-                  if (dx === 0 && dy === 0) continue;
-                  if (energyMap[(y + dy) * procW + (x + dx)] > val) {
-                    isLocalMax = false;
-                    break;
-                  }
-                }
-                if (!isLocalMax) break;
-              }
-
-              if (isLocalMax) {
-                peaks.push({ x, y, val });
-              }
-            }
-          }
-
+          // Multi-bulb detection (Tray ~15 onions or Crate 50-100+ onions)
           // Sort peaks by prominence
-          peaks.sort((a, b) => b.val - a.val);
+          candidatePeaks.sort((a, b) => b.val - a.val);
 
-          // 3. For each detected onion center, ray-trace outwards to measure its real organic boundaries
-          const maxR = Math.max(22, Math.round(procW / 14));
-          const minR = Math.max(8, Math.round(procW / 65));
+          // Ray-trace outwards from each peak to measure organic bulb boundaries
+          const isHighDensity = candidatePeaks.length > 35;
+          const maxR = isHighDensity ? Math.max(16, Math.round(procW / 22)) : Math.max(24, Math.round(procW / 14));
+          const minR = isHighDensity ? Math.max(6, Math.round(procW / 85)) : Math.max(8, Math.round(procW / 60));
 
-          for (const peak of peaks) {
+          for (const peak of candidatePeaks) {
             const cx = peak.x;
             const cy = peak.y;
 
@@ -198,7 +210,7 @@ export async function detectOnionsDynamically(imageSrc: string): Promise<Dynamic
             for (let r = minR; r < maxR; r++) {
               const tx = cx - r;
               if (tx <= 2 || !isFg[cy * procW + tx]) { rL = r; break; }
-              if (energyMap[cy * procW + tx] < peak.val * 0.22) { rL = r; break; }
+              if (energyMap[cy * procW + tx] < peak.val * 0.20) { rL = r; break; }
               rL = r;
             }
 
@@ -207,7 +219,7 @@ export async function detectOnionsDynamically(imageSrc: string): Promise<Dynamic
             for (let r = minR; r < maxR; r++) {
               const tx = cx + r;
               if (tx >= procW - 2 || !isFg[cy * procW + tx]) { rR = r; break; }
-              if (energyMap[cy * procW + tx] < peak.val * 0.22) { rR = r; break; }
+              if (energyMap[cy * procW + tx] < peak.val * 0.20) { rR = r; break; }
               rR = r;
             }
 
@@ -216,7 +228,7 @@ export async function detectOnionsDynamically(imageSrc: string): Promise<Dynamic
             for (let r = minR; r < maxR; r++) {
               const ty = cy - r;
               if (ty <= 2 || !isFg[ty * procW + cx]) { rU = r; break; }
-              if (energyMap[ty * procW + cx] < peak.val * 0.22) { rU = r; break; }
+              if (energyMap[ty * procW + cx] < peak.val * 0.20) { rU = r; break; }
               rU = r;
             }
 
@@ -225,30 +237,29 @@ export async function detectOnionsDynamically(imageSrc: string): Promise<Dynamic
             for (let r = minR; r < maxR; r++) {
               const ty = cy + r;
               if (ty >= procH - 2 || !isFg[ty * procW + cx]) { rD = r; break; }
-              if (energyMap[ty * procW + cx] < peak.val * 0.22) { rD = r; break; }
+              if (energyMap[ty * procW + cx] < peak.val * 0.20) { rD = r; break; }
               rD = r;
             }
 
-            // Natural, organic asymmetric dimensions
             const bw = rL + rR;
             const bh = rU + rD;
             const bx = Math.max(0, cx - rL);
             const by = Math.max(0, cy - rU);
 
             const aspect = bw / bh;
-            if (aspect >= 0.55 && aspect <= 1.80 && bw >= minR * 1.8 && bh >= minR * 1.8) {
+            if (aspect >= 0.50 && aspect <= 1.95 && bw >= minR * 1.5 && bh >= minR * 1.5) {
               rawBoxes.push({
                 x: bx,
                 y: by,
                 w: bw,
                 h: bh,
-                score: 0.80 + Math.min(0.19, (peak.val / 220)),
+                score: 0.82 + Math.min(0.17, (peak.val / 220)),
               });
             }
           }
         }
 
-        // 4. Non-Maximum Suppression (NMS) to eliminate duplicate/overlapping boxes
+        // 4. Non-Maximum Suppression (NMS)
         const boxes: RawBox[] = [];
         rawBoxes.sort((a, b) => b.score - a.score);
 
@@ -264,7 +275,10 @@ export async function detectOnionsDynamically(imageSrc: string): Promise<Dynamic
           return unionArea > 0 ? interArea / unionArea : 0;
         };
 
-        const iouThreshold = rawBoxes.length > 50 ? 0.32 : 0.38;
+        // Adaptive IoU threshold:
+        // Crate (50-100+): 0.48 so overlapping onions are preserved
+        // Tray (10-25): 0.42 so adjacent touching onions don't delete each other
+        const iouThreshold = rawBoxes.length > 40 ? 0.48 : 0.42;
         for (const candidate of rawBoxes) {
           let keep = true;
           for (const accepted of boxes) {
@@ -278,8 +292,7 @@ export async function detectOnionsDynamically(imageSrc: string): Promise<Dynamic
           }
         }
 
-
-        // If no boxes detected (e.g. unique lighting), fallback to single full-frame center box
+        // If no boxes detected fallback
         if (boxes.length === 0) {
           boxes.push({
             x: procW * 0.15,

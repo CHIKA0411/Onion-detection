@@ -12,9 +12,10 @@ from datetime import datetime
 from typing import Dict, Any, List, Optional
 from pathlib import Path
 
-sys.path.append(r"C:\Users\abham\AppData\Roaming\Python\Python312\site-packages")
-sys.path.append(os.path.abspath("sih_onion/ml_pipeline/src"))
-sys.path.append(os.path.abspath("sih_onion/backend/grading_engine"))
+# Fix Python paths for ML pipeline and grading engine
+current_dir = Path(__file__).parent.parent.parent
+sys.path.insert(0, str(current_dir / "ml_pipeline" / "src"))
+sys.path.insert(0, str(current_dir / "backend" / "grading_engine"))
 
 from fastapi import FastAPI, File, UploadFile, Form, HTTPException, Depends, status
 from fastapi.responses import HTMLResponse, FileResponse, JSONResponse
