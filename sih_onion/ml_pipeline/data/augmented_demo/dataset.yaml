@@ -1,0 +1,9 @@
+names:
+  0: grade_a
+  1: damaged
+  2: rotten
+  3: sprouted
+  4: undersized
+path: C:\Users\abham\OneDrive\Desktop\sih onion\sih_onion\ml_pipeline\data\augmented_demo
+train: train/images
+val: val/images

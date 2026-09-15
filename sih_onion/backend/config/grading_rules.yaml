@@ -1,0 +1,24 @@
+# Procurement Center Quality Grading Rules & Thresholds
+
+center_id: "CENTER_DL_001"
+center_name: "Azadpur Mandi Procurement Center"
+
+rules:
+  min_confidence_threshold: 0.50  # Detections below this score are flagged for human review
+  
+  # Categorization buckets for URS (Undersized / Rejected Stock)
+  urs_categories:
+    - undersized
+    - rotten
+    - damaged
+    - sprouted
+
+  grade_a_categories:
+    - grade_a
+
+  # Configurable size cut-off (in cm)
+  undersized_size_cm: 4.5
+
+  # Quality threshold alerts (for dashboard or warnings)
+  min_acceptable_grade_a_pct: 70.0
+  max_acceptable_urs_pct: 20.0

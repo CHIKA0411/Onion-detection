@@ -1,0 +1,47 @@
+# ML Pipeline Configuration for SIH26031 Onion Quality Assessment
+
+dataset:
+  raw_dir: "./data/raw"
+  processed_dir: "./data/processed"
+  augmented_dir: "./data/augmented"
+  yaml_path: "./data/dataset.yaml"
+  train_split: 0.8
+  val_split: 0.2
+  seed: 42
+  classes:
+    0: grade_a
+    1: damaged
+    2: rotten
+    3: sprouted
+    4: undersized
+
+augmentation:
+  factor: 3  # Generate 3 augmented copies per input image
+  rotation_angle: 30
+  brightness_contrast: 0.2
+  hue_saturation: 0.1
+  occlusion_holes: 2
+  occlusion_size: 40
+
+training:
+  model_type: "yolov8n-seg.pt"  # Nano model for mobile deployment
+  epochs: 30
+  img_size: 640
+  batch_size: 8
+  patience: 10
+  device: "cpu"  # "0" for GPU, "cpu" for CPU
+  project: "../models/runs"
+  name: "onion_yolov8_seg"
+
+calibration:
+  reference_type: "card"  # "card" (credit card) or "coin" (₹5 coin)
+  ref_width_cm: 8.56       # Credit card width in cm
+  ref_height_cm: 5.39      # Credit card height in cm
+  coin_diameter_cm: 2.3    # ₹5 coin diameter in cm
+  undersized_threshold_cm: 4.5  # Onions < 4.5cm flagged as undersized
+  min_confidence: 0.50
+
+export:
+  output_dir: "../models/exported"
+  onnx_filename: "onion_yolov8_seg.onnx"
+  tflite_filename: "onion_yolov8_seg.tflite"
