@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;500;600;700&family=Outfit:wght@500;600;700&display=swap');
+
+:root {
+  /* 3 Cohesive Primary Color Tones: Onion Purple/Burgundy, Leaf Green, & Warm Off-White */
+  --bg-linen: #FDF9F6;
+  --bg-linen-light: #FFFFFF;
+  --bg-linen-dark: #F5EBE6;
+  
+  /* 1. Primary Accent: Rich Onion Skin Purple / Burgundy */
+  --accent-onion-purple: #702641;
+  --accent-onion-purple-light: #FDF2F5;
+  --accent-onion-purple-hover: #521B2F;
+
+  /* 2. Secondary Accent: Natural Leaf/Sprout Green */
+  --accent-leaf-green: #2E7D32;
+  --accent-leaf-green-hover: #1B5E20;
+  --accent-leaf-light: #E8F5E9;
+  
+  /* 3. Text Tones: Deep Dark Earth & Muted Slate */
+  --text-earth-dark: #2B1820;
+  --text-earth-brown: #4A323C;
+  --text-earth-light: #7A626C;
+
+  --badge-grade-a: #2E7D32;
+  --badge-rotten: #8B0000;
+  --badge-damaged: #B71C1C;
+  --badge-sprouted: #702641;
+  --badge-undersized: #5D4037;
+
+  --surface-white: #FFFFFF;
+  --surface-card: #FFFFFF;
+  
+  --border-subtle: rgba(112, 38, 65, 0.12);
+  --border-strong: rgba(112, 38, 65, 0.25);
+  
+  --shadow-sm: 0 2px 8px rgba(74, 59, 50, 0.06);
+  --shadow-md: 0 6px 18px rgba(74, 59, 50, 0.09);
+  --shadow-lg: 0 12px 28px rgba(74, 59, 50, 0.14);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  --font-main: 'Noto Sans', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Outfit', 'Noto Sans', sans-serif;
+}
+
+/* Base Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--bg-linen);
+  color: var(--text-earth-brown);
+  font-family: var(--font-main);
+  line-height: 1.5;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--text-earth-dark);
+  font-weight: 600;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  outline: none;
+}
+
+/* App Container Layout */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--bg-linen);
+  max-width: 100vw;
+  position: relative;
+}
+
+/* Glassmorphism Card Style */
+.moa-card {
+  background: var(--surface-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+  padding: 1.25rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.moa-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.moa-card-linen {
+  background: var(--bg-linen-light);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  padding: 1.25rem;
+}
+
+/* Custom Buttons */
+.btn-leaf-green {
+  background-color: var(--accent-leaf-green);
+  color: #FFFFFF;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 12px rgba(47, 133, 90, 0.35);
+  font-size: 0.95rem;
+}
+
+.btn-leaf-green:hover {
+  background-color: var(--accent-leaf-green-hover);
+  transform: translateY(-1px);
+}
+
+.btn-earth-brown {
+  background-color: var(--text-earth-brown);
+  color: #FFFFFF;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-earth-brown:hover {
+  background-color: var(--text-earth-dark);
+}
+
+.btn-outline-brown {
+  background: transparent;
+  color: var(--text-earth-brown);
+  border: 1.5px solid var(--text-earth-brown);
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-outline-brown:hover {
+  background: var(--bg-linen-dark);
+}
+
+/* Badges */
+.badge-grade-a {
+  background-color: var(--accent-leaf-light);
+  color: var(--accent-leaf-green-hover);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.badge-terracotta {
+  background-color: var(--accent-terracotta-light);
+  color: var(--accent-terracotta-dark);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-linen);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-earth-light);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-earth-brown);
+}
+
+/* Animation utilities */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes pulseGreen {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(47, 133, 90, 0.4); }
+  50% { box-shadow: 0 0 0 10px rgba(47, 133, 90, 0); }
+}
+
+.pulse-green {
+  animation: pulseGreen 2s infinite;
+}
+
+

@@ -1,0 +1,36 @@
+# Backend API Requirements
+# Install with: pip install -r backend-requirements.txt
+
+# Core ML & Image Processing
+ultralytics>=8.0.0
+torch>=2.0.0
+torchvision>=0.15.0
+opencv-python>=4.8.0
+albumentations>=1.3.0
+pillow>=10.0.0
+
+# Data & Config
+numpy>=1.24.0
+pyyaml>=6.0
+onnx>=1.14.0
+
+# Reports & Documents
+reportlab>=4.0.0
+
+# Web Framework & API
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+python-multipart>=0.0.6
+pydantic>=2.0.0
+python-dotenv>=1.0.0
+
+# CORS & Security
+fastapi-cors>=0.0.6
+
+# Database (optional for production)
+sqlalchemy>=2.0.0
+psycopg2-binary>=2.9.0
+
+# Development
+pytest>=7.4.0
+httpx>=0.24.0

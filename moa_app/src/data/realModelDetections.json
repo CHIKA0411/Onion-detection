@@ -1,0 +1,2122 @@
+{
+  "single": {
+    "total": 1,
+    "items": [
+      {
+        "id": 1,
+        "class": "grade_a",
+        "confidence": 99,
+        "diameterMm": 68,
+        "bbox": {
+          "x": 12.86,
+          "y": 8.98,
+          "width": 78.06,
+          "height": 85.92
+        }
+      }
+    ]
+  },
+  "batch_tray": {
+    "total": 11,
+    "items": [
+      {
+        "id": 1,
+        "class": "grade_a",
+        "confidence": 94,
+        "diameterMm": 54,
+        "bbox": {
+          "x": 36.8,
+          "y": 48.8,
+          "width": 23.4,
+          "height": 22.4
+        }
+      },
+      {
+        "id": 2,
+        "class": "grade_a",
+        "confidence": 93,
+        "diameterMm": 56,
+        "bbox": {
+          "x": 59.7,
+          "y": 55.8,
+          "width": 21.8,
+          "height": 20.0
+        }
+      },
+      {
+        "id": 3,
+        "class": "damaged",
+        "confidence": 90,
+        "diameterMm": 48,
+        "bbox": {
+          "x": 84.7,
+          "y": 10.5,
+          "width": 15.7,
+          "height": 14.1
+        }
+      },
+      {
+        "id": 4,
+        "class": "grade_a",
+        "confidence": 88,
+        "diameterMm": 52,
+        "bbox": {
+          "x": 17.8,
+          "y": 45.1,
+          "width": 20.6,
+          "height": 18.3
+        }
+      },
+      {
+        "id": 5,
+        "class": "grade_a",
+        "confidence": 82,
+        "diameterMm": 50,
+        "bbox": {
+          "x": 11.4,
+          "y": 34.4,
+          "width": 20.9,
+          "height": 19.2
+        }
+      },
+      {
+        "id": 6,
+        "class": "grade_a",
+        "confidence": 80,
+        "diameterMm": 52,
+        "bbox": {
+          "x": 21.7,
+          "y": 75.0,
+          "width": 18.5,
+          "height": 16.3
+        }
+      },
+      {
+        "id": 7,
+        "class": "sprouted",
+        "confidence": 79,
+        "diameterMm": 46,
+        "bbox": {
+          "x": 73.3,
+          "y": 6.4,
+          "width": 14.0,
+          "height": 11.4
+        }
+      },
+      {
+        "id": 8,
+        "class": "grade_a",
+        "confidence": 77,
+        "diameterMm": 52,
+        "bbox": {
+          "x": 3.1,
+          "y": 68.9,
+          "width": 20.4,
+          "height": 18.4
+        }
+      },
+      {
+        "id": 9,
+        "class": "grade_a",
+        "confidence": 75,
+        "diameterMm": 49,
+        "bbox": {
+          "x": 27.5,
+          "y": 24.5,
+          "width": 19.2,
+          "height": 19.8
+        }
+      },
+      {
+        "id": 10,
+        "class": "rotten",
+        "confidence": 72,
+        "diameterMm": 48,
+        "bbox": {
+          "x": 49.1,
+          "y": 28.5,
+          "width": 19.0,
+          "height": 16.1
+        }
+      },
+      {
+        "id": 11,
+        "class": "undersized",
+        "confidence": 68,
+        "diameterMm": 34,
+        "bbox": {
+          "x": 42.6,
+          "y": 18.1,
+          "width": 14.5,
+          "height": 10.1
+        }
+      }
+    ]
+  },
+  "full_crate": {
+    "total": 43,
+    "items": [
+      {
+        "id": 1,
+        "class": "grade_a",
+        "confidence": 99,
+        "diameterMm": 25,
+        "bbox": {
+          "x": 84.17,
+          "y": 73.33,
+          "width": 15.56,
+          "height": 26.25
+        }
+      },
+      {
+        "id": 2,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 24,
+        "bbox": {
+          "x": 65.83,
+          "y": 81.67,
+          "width": 16.94,
+          "height": 18.33
+        }
+      },
+      {
+        "id": 3,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 26,
+        "bbox": {
+          "x": 81.67,
+          "y": 4.17,
+          "width": 18.06,
+          "height": 23.33
+        }
+      },
+      {
+        "id": 4,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 21,
+        "bbox": {
+          "x": 0.0,
+          "y": 60.42,
+          "width": 11.94,
+          "height": 22.08
+        }
+      },
+      {
+        "id": 5,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 14,
+        "bbox": {
+          "x": 0.0,
+          "y": 85.83,
+          "width": 10.0,
+          "height": 13.75
+        }
+      },
+      {
+        "id": 6,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 30,
+        "bbox": {
+          "x": 5.83,
+          "y": 74.58,
+          "width": 20.83,
+          "height": 25.0
+        }
+      },
+      {
+        "id": 7,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 26,
+        "bbox": {
+          "x": 19.72,
+          "y": 7.5,
+          "width": 16.39,
+          "height": 27.5
+        }
+      },
+      {
+        "id": 8,
+        "class": "grade_a",
+        "confidence": 99,
+        "diameterMm": 21,
+        "bbox": {
+          "x": 77.5,
+          "y": 29.17,
+          "width": 15.0,
+          "height": 18.75
+        }
+      },
+      {
+        "id": 9,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 22,
+        "bbox": {
+          "x": 36.39,
+          "y": 70.0,
+          "width": 15.28,
+          "height": 22.92
+        }
+      },
+      {
+        "id": 10,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 14,
+        "bbox": {
+          "x": 75.0,
+          "y": 95.83,
+          "width": 10.28,
+          "height": 4.17
+        }
+      },
+      {
+        "id": 11,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 26,
+        "bbox": {
+          "x": 70.28,
+          "y": 65.83,
+          "width": 18.33,
+          "height": 25.83
+        }
+      },
+      {
+        "id": 12,
+        "class": "grade_a",
+        "confidence": 99,
+        "diameterMm": 14,
+        "bbox": {
+          "x": 0.0,
+          "y": 85.0,
+          "width": 10.28,
+          "height": 15.0
+        }
+      },
+      {
+        "id": 13,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 23,
+        "bbox": {
+          "x": 28.06,
+          "y": 34.58,
+          "width": 16.11,
+          "height": 22.92
+        }
+      },
+      {
+        "id": 14,
+        "class": "grade_a",
+        "confidence": 99,
+        "diameterMm": 20,
+        "bbox": {
+          "x": 89.72,
+          "y": 22.92,
+          "width": 10.0,
+          "height": 20.83
+        }
+      },
+      {
+        "id": 15,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 32,
+        "bbox": {
+          "x": 0.0,
+          "y": 29.58,
+          "width": 10.0,
+          "height": 34.17
+        }
+      },
+      {
+        "id": 16,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 24,
+        "bbox": {
+          "x": 31.94,
+          "y": 12.5,
+          "width": 16.94,
+          "height": 22.92
+        }
+      },
+      {
+        "id": 17,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 21,
+        "bbox": {
+          "x": 48.61,
+          "y": 0.0,
+          "width": 14.72,
+          "height": 13.75
+        }
+      },
+      {
+        "id": 18,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 24,
+        "bbox": {
+          "x": 69.72,
+          "y": 41.25,
+          "width": 16.67,
+          "height": 25.42
+        }
+      },
+      {
+        "id": 19,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 15,
+        "bbox": {
+          "x": 39.17,
+          "y": 0.0,
+          "width": 10.83,
+          "height": 12.92
+        }
+      },
+      {
+        "id": 20,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 31,
+        "bbox": {
+          "x": 23.89,
+          "y": 87.08,
+          "width": 21.94,
+          "height": 12.5
+        }
+      },
+      {
+        "id": 21,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 32,
+        "bbox": {
+          "x": 5.83,
+          "y": 17.08,
+          "width": 20.83,
+          "height": 33.75
+        }
+      },
+      {
+        "id": 22,
+        "class": "grade_a",
+        "confidence": 99,
+        "diameterMm": 25,
+        "bbox": {
+          "x": 84.72,
+          "y": 45.42,
+          "width": 15.28,
+          "height": 26.67
+        }
+      },
+      {
+        "id": 23,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 30,
+        "bbox": {
+          "x": 48.33,
+          "y": 15.0,
+          "width": 20.28,
+          "height": 32.08
+        }
+      },
+      {
+        "id": 24,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 19,
+        "bbox": {
+          "x": 56.67,
+          "y": 0.0,
+          "width": 13.33,
+          "height": 16.25
+        }
+      },
+      {
+        "id": 25,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 16,
+        "bbox": {
+          "x": 0.0,
+          "y": 14.17,
+          "width": 8.89,
+          "height": 16.67
+        }
+      },
+      {
+        "id": 26,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 22,
+        "bbox": {
+          "x": 12.22,
+          "y": 0.0,
+          "width": 15.28,
+          "height": 16.67
+        }
+      },
+      {
+        "id": 27,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 20,
+        "bbox": {
+          "x": 56.67,
+          "y": 85.0,
+          "width": 13.89,
+          "height": 15.0
+        }
+      },
+      {
+        "id": 28,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 15,
+        "bbox": {
+          "x": 0.0,
+          "y": 15.0,
+          "width": 9.17,
+          "height": 15.83
+        }
+      },
+      {
+        "id": 29,
+        "class": "grade_a",
+        "confidence": 97,
+        "diameterMm": 20,
+        "bbox": {
+          "x": 0.0,
+          "y": 0.0,
+          "width": 13.89,
+          "height": 12.5
+        }
+      },
+      {
+        "id": 30,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 31,
+        "bbox": {
+          "x": 6.94,
+          "y": 39.17,
+          "width": 18.33,
+          "height": 32.5
+        }
+      },
+      {
+        "id": 31,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 30,
+        "bbox": {
+          "x": 46.94,
+          "y": 57.08,
+          "width": 20.83,
+          "height": 32.08
+        }
+      },
+      {
+        "id": 32,
+        "class": "grade_a",
+        "confidence": 99,
+        "diameterMm": 7,
+        "bbox": {
+          "x": 41.11,
+          "y": 93.33,
+          "width": 5.28,
+          "height": 6.25
+        }
+      },
+      {
+        "id": 33,
+        "class": "grade_a",
+        "confidence": 99,
+        "diameterMm": 28,
+        "bbox": {
+          "x": 5.28,
+          "y": 17.5,
+          "width": 20.0,
+          "height": 27.5
+        }
+      },
+      {
+        "id": 34,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 11,
+        "bbox": {
+          "x": 0.0,
+          "y": 50.42,
+          "width": 8.06,
+          "height": 12.08
+        }
+      },
+      {
+        "id": 35,
+        "class": "grade_a",
+        "confidence": 99,
+        "diameterMm": 9,
+        "bbox": {
+          "x": 0.0,
+          "y": 0.0,
+          "width": 2.78,
+          "height": 10.0
+        }
+      },
+      {
+        "id": 36,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 33,
+        "bbox": {
+          "x": 48.33,
+          "y": 12.92,
+          "width": 20.56,
+          "height": 35.0
+        }
+      },
+      {
+        "id": 37,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 18,
+        "bbox": {
+          "x": 57.22,
+          "y": 0.0,
+          "width": 12.5,
+          "height": 16.25
+        }
+      },
+      {
+        "id": 38,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 21,
+        "bbox": {
+          "x": 15.0,
+          "y": 62.08,
+          "width": 15.0,
+          "height": 19.17
+        }
+      },
+      {
+        "id": 39,
+        "class": "grade_a",
+        "confidence": 99,
+        "diameterMm": 19,
+        "bbox": {
+          "x": 41.11,
+          "y": 27.08,
+          "width": 12.5,
+          "height": 20.0
+        }
+      },
+      {
+        "id": 40,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 20,
+        "bbox": {
+          "x": 44.44,
+          "y": 87.92,
+          "width": 14.44,
+          "height": 12.08
+        }
+      },
+      {
+        "id": 41,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 32,
+        "bbox": {
+          "x": 7.22,
+          "y": 75.0,
+          "width": 22.78,
+          "height": 24.58
+        }
+      },
+      {
+        "id": 42,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 16,
+        "bbox": {
+          "x": 23.89,
+          "y": 55.0,
+          "width": 11.39,
+          "height": 13.75
+        }
+      },
+      {
+        "id": 43,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 32,
+        "bbox": {
+          "x": 19.17,
+          "y": 0.0,
+          "width": 22.78,
+          "height": 15.83
+        }
+      }
+    ]
+  },
+  "onion_bg": {
+    "total": 120,
+    "items": [
+      {
+        "id": 1,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 41,
+        "bbox": {
+          "x": 20.31,
+          "y": 60.85,
+          "width": 10.16,
+          "height": 12.32
+        }
+      },
+      {
+        "id": 2,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 24,
+        "bbox": {
+          "x": 33.5,
+          "y": 0.0,
+          "width": 5.96,
+          "height": 8.94
+        }
+      },
+      {
+        "id": 3,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 37,
+        "bbox": {
+          "x": 66.6,
+          "y": 61.58,
+          "width": 8.69,
+          "height": 13.64
+        }
+      },
+      {
+        "id": 4,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 44,
+        "bbox": {
+          "x": 33.59,
+          "y": 28.15,
+          "width": 10.94,
+          "height": 14.66
+        }
+      },
+      {
+        "id": 5,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 34,
+        "bbox": {
+          "x": 55.18,
+          "y": 27.42,
+          "width": 7.13,
+          "height": 12.61
+        }
+      },
+      {
+        "id": 6,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 40,
+        "bbox": {
+          "x": 60.74,
+          "y": 72.29,
+          "width": 9.77,
+          "height": 14.96
+        }
+      },
+      {
+        "id": 7,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 39,
+        "bbox": {
+          "x": 48.93,
+          "y": 59.97,
+          "width": 9.28,
+          "height": 14.37
+        }
+      },
+      {
+        "id": 8,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 33,
+        "bbox": {
+          "x": 0.0,
+          "y": 34.31,
+          "width": 6.74,
+          "height": 12.17
+        }
+      },
+      {
+        "id": 9,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 40,
+        "bbox": {
+          "x": 79.59,
+          "y": 30.94,
+          "width": 9.77,
+          "height": 9.97
+        }
+      },
+      {
+        "id": 10,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 42,
+        "bbox": {
+          "x": 79.59,
+          "y": 74.63,
+          "width": 10.35,
+          "height": 12.9
+        }
+      },
+      {
+        "id": 11,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 51,
+        "bbox": {
+          "x": 43.26,
+          "y": 0.0,
+          "width": 9.38,
+          "height": 18.91
+        }
+      },
+      {
+        "id": 12,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 36,
+        "bbox": {
+          "x": 59.28,
+          "y": 56.16,
+          "width": 8.89,
+          "height": 10.85
+        }
+      },
+      {
+        "id": 13,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 40,
+        "bbox": {
+          "x": 64.36,
+          "y": 43.99,
+          "width": 8.11,
+          "height": 14.66
+        }
+      },
+      {
+        "id": 14,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 53,
+        "bbox": {
+          "x": 89.75,
+          "y": 75.51,
+          "width": 10.25,
+          "height": 19.65
+        }
+      },
+      {
+        "id": 15,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 38,
+        "bbox": {
+          "x": 40.43,
+          "y": 89.0,
+          "width": 9.28,
+          "height": 11.0
+        }
+      },
+      {
+        "id": 16,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 37,
+        "bbox": {
+          "x": 64.75,
+          "y": 84.16,
+          "width": 9.08,
+          "height": 12.76
+        }
+      },
+      {
+        "id": 17,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 42,
+        "bbox": {
+          "x": 38.67,
+          "y": 41.2,
+          "width": 10.35,
+          "height": 13.93
+        }
+      },
+      {
+        "id": 18,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 38,
+        "bbox": {
+          "x": 51.66,
+          "y": 72.58,
+          "width": 9.08,
+          "height": 14.22
+        }
+      },
+      {
+        "id": 19,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 41,
+        "bbox": {
+          "x": 67.87,
+          "y": 93.26,
+          "width": 10.06,
+          "height": 6.74
+        }
+      },
+      {
+        "id": 20,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 35,
+        "bbox": {
+          "x": 43.07,
+          "y": 70.38,
+          "width": 8.69,
+          "height": 12.17
+        }
+      },
+      {
+        "id": 21,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 32,
+        "bbox": {
+          "x": 52.34,
+          "y": 1.17,
+          "width": 5.86,
+          "height": 11.88
+        }
+      },
+      {
+        "id": 22,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 34,
+        "bbox": {
+          "x": 71.29,
+          "y": 0.0,
+          "width": 8.11,
+          "height": 12.46
+        }
+      },
+      {
+        "id": 23,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 46,
+        "bbox": {
+          "x": 59.38,
+          "y": 19.35,
+          "width": 11.33,
+          "height": 11.58
+        }
+      },
+      {
+        "id": 24,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 36,
+        "bbox": {
+          "x": 48.83,
+          "y": 43.55,
+          "width": 8.79,
+          "height": 11.58
+        }
+      },
+      {
+        "id": 25,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 53,
+        "bbox": {
+          "x": 13.87,
+          "y": 79.03,
+          "width": 12.79,
+          "height": 19.5
+        }
+      },
+      {
+        "id": 26,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 29,
+        "bbox": {
+          "x": 59.47,
+          "y": 0.0,
+          "width": 7.13,
+          "height": 9.97
+        }
+      },
+      {
+        "id": 27,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 76,
+        "bbox": {
+          "x": 33.5,
+          "y": 68.48,
+          "width": 11.52,
+          "height": 28.01
+        }
+      },
+      {
+        "id": 28,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 33,
+        "bbox": {
+          "x": 36.82,
+          "y": 53.96,
+          "width": 8.2,
+          "height": 11.0
+        }
+      },
+      {
+        "id": 29,
+        "class": "grade_a",
+        "confidence": 99,
+        "diameterMm": 35,
+        "bbox": {
+          "x": 0.0,
+          "y": 93.7,
+          "width": 8.59,
+          "height": 6.3
+        }
+      },
+      {
+        "id": 30,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 53,
+        "bbox": {
+          "x": 92.29,
+          "y": 58.21,
+          "width": 7.62,
+          "height": 19.5
+        }
+      },
+      {
+        "id": 31,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 48,
+        "bbox": {
+          "x": 22.07,
+          "y": 44.57,
+          "width": 11.23,
+          "height": 17.74
+        }
+      },
+      {
+        "id": 32,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 31,
+        "bbox": {
+          "x": 59.28,
+          "y": 36.22,
+          "width": 7.52,
+          "height": 11.44
+        }
+      },
+      {
+        "id": 33,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 34,
+        "bbox": {
+          "x": 12.6,
+          "y": 32.4,
+          "width": 8.4,
+          "height": 12.46
+        }
+      },
+      {
+        "id": 34,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 32,
+        "bbox": {
+          "x": 15.72,
+          "y": 20.23,
+          "width": 7.91,
+          "height": 12.02
+        }
+      },
+      {
+        "id": 35,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 33,
+        "bbox": {
+          "x": 25.68,
+          "y": 30.79,
+          "width": 7.03,
+          "height": 12.17
+        }
+      },
+      {
+        "id": 36,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 42,
+        "bbox": {
+          "x": 0.88,
+          "y": 56.16,
+          "width": 10.45,
+          "height": 14.08
+        }
+      },
+      {
+        "id": 37,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 46,
+        "bbox": {
+          "x": 25.78,
+          "y": 14.52,
+          "width": 11.43,
+          "height": 17.16
+        }
+      },
+      {
+        "id": 38,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 29,
+        "bbox": {
+          "x": 63.96,
+          "y": 29.18,
+          "width": 7.13,
+          "height": 9.53
+        }
+      },
+      {
+        "id": 39,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 34,
+        "bbox": {
+          "x": 31.54,
+          "y": 58.94,
+          "width": 8.01,
+          "height": 12.46
+        }
+      },
+      {
+        "id": 40,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 40,
+        "bbox": {
+          "x": 54.88,
+          "y": 84.02,
+          "width": 9.96,
+          "height": 14.08
+        }
+      },
+      {
+        "id": 41,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 32,
+        "bbox": {
+          "x": 69.73,
+          "y": 18.33,
+          "width": 7.81,
+          "height": 11.0
+        }
+      },
+      {
+        "id": 42,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 31,
+        "bbox": {
+          "x": 87.7,
+          "y": 14.52,
+          "width": 7.71,
+          "height": 10.7
+        }
+      },
+      {
+        "id": 43,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 26,
+        "bbox": {
+          "x": 77.83,
+          "y": 17.16,
+          "width": 6.45,
+          "height": 9.24
+        }
+      },
+      {
+        "id": 44,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 35,
+        "bbox": {
+          "x": 12.5,
+          "y": 61.14,
+          "width": 8.59,
+          "height": 10.41
+        }
+      },
+      {
+        "id": 45,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 42,
+        "bbox": {
+          "x": 4.69,
+          "y": 67.89,
+          "width": 10.35,
+          "height": 12.46
+        }
+      },
+      {
+        "id": 46,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 38,
+        "bbox": {
+          "x": 24.12,
+          "y": 69.65,
+          "width": 9.28,
+          "height": 14.08
+        }
+      },
+      {
+        "id": 47,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 38,
+        "bbox": {
+          "x": 45.41,
+          "y": 81.67,
+          "width": 9.38,
+          "height": 11.29
+        }
+      },
+      {
+        "id": 48,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 34,
+        "bbox": {
+          "x": 40.72,
+          "y": 60.26,
+          "width": 8.4,
+          "height": 11.44
+        }
+      },
+      {
+        "id": 49,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 30,
+        "bbox": {
+          "x": 36.82,
+          "y": 22.87,
+          "width": 7.52,
+          "height": 9.82
+        }
+      },
+      {
+        "id": 50,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 35,
+        "bbox": {
+          "x": 0.0,
+          "y": 65.69,
+          "width": 4.98,
+          "height": 12.9
+        }
+      },
+      {
+        "id": 51,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 35,
+        "bbox": {
+          "x": 15.23,
+          "y": 69.79,
+          "width": 8.59,
+          "height": 10.26
+        }
+      },
+      {
+        "id": 52,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 35,
+        "bbox": {
+          "x": 82.62,
+          "y": 46.77,
+          "width": 8.59,
+          "height": 12.02
+        }
+      },
+      {
+        "id": 53,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 32,
+        "bbox": {
+          "x": 69.73,
+          "y": 18.33,
+          "width": 7.81,
+          "height": 11.14
+        }
+      },
+      {
+        "id": 54,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 28,
+        "bbox": {
+          "x": 20.9,
+          "y": 12.32,
+          "width": 6.25,
+          "height": 10.56
+        }
+      },
+      {
+        "id": 55,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 28,
+        "bbox": {
+          "x": 19.92,
+          "y": 37.54,
+          "width": 6.93,
+          "height": 10.41
+        }
+      },
+      {
+        "id": 56,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 40,
+        "bbox": {
+          "x": 79.0,
+          "y": 59.97,
+          "width": 8.69,
+          "height": 14.96
+        }
+      },
+      {
+        "id": 57,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 32,
+        "bbox": {
+          "x": 82.42,
+          "y": 22.73,
+          "width": 7.81,
+          "height": 9.09
+        }
+      },
+      {
+        "id": 58,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 38,
+        "bbox": {
+          "x": 0.1,
+          "y": 77.13,
+          "width": 9.28,
+          "height": 11.14
+        }
+      },
+      {
+        "id": 59,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 33,
+        "bbox": {
+          "x": 55.47,
+          "y": 8.65,
+          "width": 8.01,
+          "height": 12.32
+        }
+      },
+      {
+        "id": 60,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 42,
+        "bbox": {
+          "x": 72.56,
+          "y": 46.92,
+          "width": 10.25,
+          "height": 12.76
+        }
+      },
+      {
+        "id": 61,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 30,
+        "bbox": {
+          "x": 73.73,
+          "y": 57.62,
+          "width": 6.84,
+          "height": 11.0
+        }
+      },
+      {
+        "id": 62,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 52,
+        "bbox": {
+          "x": 70.31,
+          "y": 28.3,
+          "width": 10.06,
+          "height": 19.35
+        }
+      },
+      {
+        "id": 63,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 49,
+        "bbox": {
+          "x": 36.82,
+          "y": 5.28,
+          "width": 8.89,
+          "height": 18.18
+        }
+      },
+      {
+        "id": 64,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 33,
+        "bbox": {
+          "x": 93.85,
+          "y": 34.9,
+          "width": 6.05,
+          "height": 12.17
+        }
+      },
+      {
+        "id": 65,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 35,
+        "bbox": {
+          "x": 82.62,
+          "y": 47.36,
+          "width": 8.59,
+          "height": 11.44
+        }
+      },
+      {
+        "id": 66,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 39,
+        "bbox": {
+          "x": 83.89,
+          "y": 85.48,
+          "width": 9.57,
+          "height": 13.64
+        }
+      },
+      {
+        "id": 67,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 43,
+        "bbox": {
+          "x": 88.96,
+          "y": 26.54,
+          "width": 10.55,
+          "height": 13.2
+        }
+      },
+      {
+        "id": 68,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 39,
+        "bbox": {
+          "x": 94.34,
+          "y": 52.79,
+          "width": 5.57,
+          "height": 14.37
+        }
+      },
+      {
+        "id": 69,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 40,
+        "bbox": {
+          "x": 0.2,
+          "y": 45.16,
+          "width": 9.77,
+          "height": 12.46
+        }
+      },
+      {
+        "id": 70,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 73,
+        "bbox": {
+          "x": 47.27,
+          "y": 17.16,
+          "width": 9.77,
+          "height": 26.83
+        }
+      },
+      {
+        "id": 71,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 36,
+        "bbox": {
+          "x": 78.81,
+          "y": 0.29,
+          "width": 8.89,
+          "height": 9.82
+        }
+      },
+      {
+        "id": 72,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 30,
+        "bbox": {
+          "x": 19.63,
+          "y": 37.54,
+          "width": 7.42,
+          "height": 10.56
+        }
+      },
+      {
+        "id": 73,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 30,
+        "bbox": {
+          "x": 63.77,
+          "y": 29.18,
+          "width": 7.42,
+          "height": 9.82
+        }
+      },
+      {
+        "id": 74,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 34,
+        "bbox": {
+          "x": 0.0,
+          "y": 4.55,
+          "width": 8.4,
+          "height": 12.76
+        }
+      },
+      {
+        "id": 75,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 39,
+        "bbox": {
+          "x": 48.83,
+          "y": 92.38,
+          "width": 9.67,
+          "height": 7.62
+        }
+      },
+      {
+        "id": 76,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 49,
+        "bbox": {
+          "x": 26.27,
+          "y": 81.09,
+          "width": 9.47,
+          "height": 18.18
+        }
+      },
+      {
+        "id": 77,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 31,
+        "bbox": {
+          "x": 65.62,
+          "y": 0.15,
+          "width": 7.62,
+          "height": 10.56
+        }
+      },
+      {
+        "id": 78,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 27,
+        "bbox": {
+          "x": 20.61,
+          "y": 27.71,
+          "width": 6.74,
+          "height": 9.68
+        }
+      },
+      {
+        "id": 79,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 28,
+        "bbox": {
+          "x": 21.0,
+          "y": 12.46,
+          "width": 6.15,
+          "height": 10.41
+        }
+      },
+      {
+        "id": 80,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 31,
+        "bbox": {
+          "x": 44.63,
+          "y": 31.96,
+          "width": 7.62,
+          "height": 10.85
+        }
+      },
+      {
+        "id": 81,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 36,
+        "bbox": {
+          "x": 26.56,
+          "y": 95.89,
+          "width": 8.79,
+          "height": 4.11
+        }
+      },
+      {
+        "id": 82,
+        "class": "grade_a",
+        "confidence": 99,
+        "diameterMm": 37,
+        "bbox": {
+          "x": 58.89,
+          "y": 94.43,
+          "width": 9.08,
+          "height": 5.57
+        }
+      },
+      {
+        "id": 83,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 26,
+        "bbox": {
+          "x": 2.44,
+          "y": 21.41,
+          "width": 6.45,
+          "height": 8.94
+        }
+      },
+      {
+        "id": 84,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 38,
+        "bbox": {
+          "x": 93.95,
+          "y": 45.01,
+          "width": 5.96,
+          "height": 14.22
+        }
+      },
+      {
+        "id": 85,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 42,
+        "bbox": {
+          "x": 62.79,
+          "y": 6.3,
+          "width": 8.69,
+          "height": 15.54
+        }
+      },
+      {
+        "id": 86,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 30,
+        "bbox": {
+          "x": 66.02,
+          "y": 1.32,
+          "width": 7.32,
+          "height": 9.38
+        }
+      },
+      {
+        "id": 87,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 35,
+        "bbox": {
+          "x": 4.0,
+          "y": 0.0,
+          "width": 8.69,
+          "height": 9.09
+        }
+      },
+      {
+        "id": 88,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 39,
+        "bbox": {
+          "x": 70.31,
+          "y": 71.26,
+          "width": 9.38,
+          "height": 14.52
+        }
+      },
+      {
+        "id": 89,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 34,
+        "bbox": {
+          "x": 8.01,
+          "y": 19.21,
+          "width": 8.3,
+          "height": 11.0
+        }
+      },
+      {
+        "id": 90,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 40,
+        "bbox": {
+          "x": 74.02,
+          "y": 82.7,
+          "width": 9.86,
+          "height": 14.37
+        }
+      },
+      {
+        "id": 91,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 37,
+        "bbox": {
+          "x": 78.81,
+          "y": 1.03,
+          "width": 9.18,
+          "height": 9.24
+        }
+      },
+      {
+        "id": 92,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 26,
+        "bbox": {
+          "x": 79.3,
+          "y": 40.76,
+          "width": 6.45,
+          "height": 8.21
+        }
+      },
+      {
+        "id": 93,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 39,
+        "bbox": {
+          "x": 24.02,
+          "y": 69.94,
+          "width": 9.57,
+          "height": 13.93
+        }
+      },
+      {
+        "id": 94,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 39,
+        "bbox": {
+          "x": 70.41,
+          "y": 71.26,
+          "width": 9.38,
+          "height": 14.52
+        }
+      },
+      {
+        "id": 95,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 29,
+        "bbox": {
+          "x": 59.47,
+          "y": 0.0,
+          "width": 7.13,
+          "height": 9.82
+        }
+      },
+      {
+        "id": 96,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 48,
+        "bbox": {
+          "x": 84.18,
+          "y": 57.04,
+          "width": 9.67,
+          "height": 17.89
+        }
+      },
+      {
+        "id": 97,
+        "class": "grade_a",
+        "confidence": 99,
+        "diameterMm": 28,
+        "bbox": {
+          "x": 34.67,
+          "y": 96.48,
+          "width": 7.03,
+          "height": 3.52
+        }
+      },
+      {
+        "id": 98,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 21,
+        "bbox": {
+          "x": 30.08,
+          "y": 95.45,
+          "width": 5.27,
+          "height": 4.55
+        }
+      },
+      {
+        "id": 99,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 32,
+        "bbox": {
+          "x": 94.63,
+          "y": 10.41,
+          "width": 5.27,
+          "height": 11.88
+        }
+      },
+      {
+        "id": 100,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 30,
+        "bbox": {
+          "x": 93.75,
+          "y": 35.34,
+          "width": 6.05,
+          "height": 11.29
+        }
+      },
+      {
+        "id": 101,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 30,
+        "bbox": {
+          "x": 86.33,
+          "y": 5.72,
+          "width": 7.52,
+          "height": 10.12
+        }
+      },
+      {
+        "id": 102,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 32,
+        "bbox": {
+          "x": 0.29,
+          "y": 4.69,
+          "width": 8.01,
+          "height": 10.7
+        }
+      },
+      {
+        "id": 103,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 53,
+        "bbox": {
+          "x": 0.0,
+          "y": 4.55,
+          "width": 8.11,
+          "height": 19.5
+        }
+      },
+      {
+        "id": 104,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 57,
+        "bbox": {
+          "x": 8.11,
+          "y": 44.13,
+          "width": 14.06,
+          "height": 19.5
+        }
+      },
+      {
+        "id": 105,
+        "class": "grade_a",
+        "confidence": 99,
+        "diameterMm": 42,
+        "bbox": {
+          "x": 77.83,
+          "y": 94.43,
+          "width": 10.25,
+          "height": 5.57
+        }
+      },
+      {
+        "id": 106,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 38,
+        "bbox": {
+          "x": 29.2,
+          "y": 37.98,
+          "width": 9.47,
+          "height": 13.93
+        }
+      },
+      {
+        "id": 107,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 34,
+        "bbox": {
+          "x": 45.12,
+          "y": 52.49,
+          "width": 8.3,
+          "height": 10.7
+        }
+      },
+      {
+        "id": 108,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 55,
+        "bbox": {
+          "x": 19.34,
+          "y": 0.44,
+          "width": 7.81,
+          "height": 20.23
+        }
+      },
+      {
+        "id": 109,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 30,
+        "bbox": {
+          "x": 96.09,
+          "y": 56.01,
+          "width": 3.91,
+          "height": 11.29
+        }
+      },
+      {
+        "id": 110,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 65,
+        "bbox": {
+          "x": 83.89,
+          "y": 0.0,
+          "width": 16.02,
+          "height": 15.84
+        }
+      },
+      {
+        "id": 111,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 42,
+        "bbox": {
+          "x": 78.22,
+          "y": 9.82,
+          "width": 9.86,
+          "height": 15.69
+        }
+      },
+      {
+        "id": 112,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 39,
+        "bbox": {
+          "x": 92.87,
+          "y": 85.34,
+          "width": 7.03,
+          "height": 14.52
+        }
+      },
+      {
+        "id": 113,
+        "class": "grade_a",
+        "confidence": 99,
+        "diameterMm": 37,
+        "bbox": {
+          "x": 17.87,
+          "y": 97.07,
+          "width": 9.08,
+          "height": 2.93
+        }
+      },
+      {
+        "id": 114,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 32,
+        "bbox": {
+          "x": 59.18,
+          "y": 46.48,
+          "width": 6.84,
+          "height": 11.88
+        }
+      },
+      {
+        "id": 115,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 39,
+        "bbox": {
+          "x": 79.69,
+          "y": 31.09,
+          "width": 9.67,
+          "height": 10.12
+        }
+      },
+      {
+        "id": 116,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 36,
+        "bbox": {
+          "x": 42.97,
+          "y": 70.38,
+          "width": 8.89,
+          "height": 12.32
+        }
+      },
+      {
+        "id": 117,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 37,
+        "bbox": {
+          "x": 78.71,
+          "y": 63.34,
+          "width": 9.08,
+          "height": 11.58
+        }
+      },
+      {
+        "id": 118,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 20,
+        "bbox": {
+          "x": 97.07,
+          "y": 30.79,
+          "width": 2.83,
+          "height": 7.33
+        }
+      },
+      {
+        "id": 119,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 35,
+        "bbox": {
+          "x": 5.27,
+          "y": 83.72,
+          "width": 8.69,
+          "height": 13.05
+        }
+      },
+      {
+        "id": 120,
+        "class": "grade_a",
+        "confidence": 100,
+        "diameterMm": 31,
+        "bbox": {
+          "x": 59.28,
+          "y": 36.22,
+          "width": 7.62,
+          "height": 11.29
+        }
+      }
+    ]
+  }
+}

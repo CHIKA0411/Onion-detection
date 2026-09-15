@@ -1,0 +1,17 @@
+{
+  "short_name": "Onion Grader",
+  "name": "Onion Quality Detection & Grading System",
+  "description": "Automated onion quality evaluation and grading application for procurement centers under SIH26031.",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#4A3B32",
+  "background_color": "#FDF8F0"
+}
